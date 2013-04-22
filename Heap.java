@@ -14,7 +14,7 @@ class Heap <Patirnt>
 	 */
 	public Heap(int maxSize)
 	{
-		elements =  new Patient[maxSize];
+		elements =  new Patient[maxSize + 1];
 		lastIndex = 1;
 		maxIndex = maxSize + 1;//in order to hide elements[0], but need the same size of user's need.
 
