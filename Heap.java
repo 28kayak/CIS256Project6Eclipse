@@ -15,12 +15,12 @@ class Heap <Patirnt>
 	public Heap(int maxSize)
 	{
 		elements =  new Patient[maxSize];
-		lastIndex = -1;
+		lastIndex = 1;
 		maxIndex = maxSize -1;
 
 	}
 	/**
-	 * [inEmpty determin whether this heap is empty]
+	 * [inEmpty determine whether this heap is empty]
 	 * @return [if lastIndex remains -1, return true, that is, empty]
 	 */
 	public boolean isEmpty()
@@ -29,7 +29,7 @@ class Heap <Patirnt>
 	}
 	/**
 	 * [isFull Determine whether this heap is full]
-	 * @return [if lastIndex recheas to maxIndex, return true, that means full]
+	 * @return [if lastIndex reaches to maxIndex, return true, that means full]
 	 */
 	public boolean isFull()
 	{
@@ -51,10 +51,7 @@ class Heap <Patirnt>
 		{
 			elements[lastIndex] = item;
 			 upTrade(lastIndex);
-				
 
-				
-			
 		}
 	}
 	/**
@@ -70,6 +67,8 @@ class Heap <Patirnt>
 		} 
 		else
 		{
+			elements[1] = elements[lastIndex];//instead of deleting, update the value of lastIndex
+			downTrade(1);//because elements[1] = root
 
 		}
 		return null;
@@ -105,6 +104,7 @@ class Heap <Patirnt>
 			//nothing to do
 		}
 	}
+	/*
 	public void downTrade(int index)
 	{
 		Patient temp;
@@ -150,6 +150,41 @@ class Heap <Patirnt>
 		{
 			//nothing to do
 		}
-		*/
-	}
+		
+	}*/
+	public void downTrade(int index)
+	{
+		Patient temp;
+		if(maxIndex < (index * 2 +1))
+		{//determine if there is still space or not
+			if((2 * index + 1) <= maxIndex )
+			{//there are 2 children 
+				if(elements[2*index+1].getPriority() > elements[2*index].getPriority())
+				{
+					if(elements[index].getPriority() < elements[2*index+1].getPriority())
+					{
+						temp = elements[index];
+						elements[index * 2] = elements[index];
+						elements[index] = elements[index * 2];
+						downTrade(2*index +1);
+					}
+				}
+				
+			}
+			else if((2* index) == maxIndex)
+			{//there is only left side child
+				if(elements[2*index].getPriority() > elements[index].getPriority())
+				{
+					temp = elements[index];
+					elements[index * 2] = elements[index];
+					elements[index] = elements[index * 2];
+					//since there is no more child(determine by no-right most child), no need to look downward
+				}
+			}else if(2*index > maxIndex)
+			{
+				//nothing to do
+			}
+			
+		}
+	}//dwonTrade()
 }//class 
