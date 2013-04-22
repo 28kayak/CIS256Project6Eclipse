@@ -25,7 +25,7 @@ class Heap <Patirnt>
 	 */
 	public boolean isEmpty()
 	{
-		return (lastIndex == -1);
+		return (lastIndex == 1);
 	}
 	/**
 	 * [isFull Determine whether this heap is full]
@@ -50,7 +50,8 @@ class Heap <Patirnt>
 		else
 		{
 			elements[lastIndex] = item;
-			 upTrade(lastIndex);
+			upTrade(lastIndex);
+			lastIndex++;
 
 		}
 	}
@@ -69,6 +70,7 @@ class Heap <Patirnt>
 		{
 			elements[1] = elements[lastIndex];//instead of deleting, update the value of lastIndex
 			downTrade(1);//because elements[1] = root
+			lastIndex--;
 
 		}
 		return null;
