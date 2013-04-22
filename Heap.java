@@ -104,54 +104,7 @@ class Heap <Patirnt>
 			//nothing to do
 		}
 	}
-	/*
-	public void downTrade(int index)
-	{
-		Patient temp;
-		if(elements[index * 2].getPriority() > elements[index * 2 + 1].getPriority())
-		{//elements[index * 2].getPriority() is bigger 
-			if((elements[index].getPriority() < elements[index * 2].getPriority() && ((index * 2 + 1) > maxIndex )))
-			{
-				temp = elements[index];
-				elements[index * 2] = elements[index];
-				elements[index] = elements[index * 2];
-				downTrade(index * 2);
-			}
-			else
-			{
-				//nothing to do
-			}
-		}
-		else
-		{
-			if((elements[index].getPriority() < elements[index * 2 + 1].getPriority() && ((index * 2) > maxIndex )))
-			{
-				temp = elements[index];
-				elements[index * 2] = elements[index];
-				elements[index] = elements[index * 2];
-				downTrade(index * 2);
-			}
-			else
-			{
-				//nothing to do
-			}
-		}
-		
-		/*
-		
-		if((elements[index].getPriority() < elements[index * 2].getPriority()) && ((index * 2 + 1) > maxIndex ) || (index * 2) > maxIndex)
-		{
-			temp = elements[index];
-			elements[index * 2] = elements[index];
-			elements[index] = elements[index * 2];
-			downTrade(index * 2);
-		}
-		else
-		{
-			//nothing to do
-		}
-		
-	}*/
+	
 	public void downTrade(int index)
 	{
 		Patient temp;
