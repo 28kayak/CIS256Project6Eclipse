@@ -96,7 +96,7 @@ class Heap <Patirnt>
 			temp = elements[index];//store value at elements[index] temporally 
 			elements[index] = elements[index % 2];//sudstitude parents value to a child
 			elements[index % 2] = temp;//re-store value at elements[index]
-			upTrade(index);
+			upTrade(index % 2);
 			
 
 		}		
