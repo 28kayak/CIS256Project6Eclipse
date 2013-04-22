@@ -105,15 +105,19 @@ class Heap <Patirnt>
 			//nothing to do
 		}
 	}
-	public int downTrade(int index)
+	public void downTrade(int index)
 	{
-		if((elements[index] < elements[index * 2]) && ((index * 2 + 1) > maxIndex ))
+		Patient temp;
+		if((elements[index].getPriority() < elements[index * 2].getPriority()) && ((index * 2 + 1) > maxIndex ))
 		{
-			elements[index % 2] = elements[index];
+			temp = elements[index];
+			elements[index * 2] = elements[index];
+			elements[index] = elements[index * 2];
+			downTrade(index * 2);
 		}
 		else
 		{
-			return downTrade(index);
+			//nothing to do
 		}
 	}
 }//class 
