@@ -62,18 +62,20 @@ class Heap <Patirnt>
 	 */
 	public Patient remove() 
 	{
+		Patient dequeue;
 		if(isEmpty())
 		{
 			throw new PriQunderflowException("---This Heap is EMPTY---");
 		} 
 		else
 		{
+			dequeue = elements[1];//hold information into dequeue temporally
 			elements[1] = elements[lastIndex];//instead of deleting, update the value of lastIndex
 			downTrade(1);//because elements[1] = root
 			lastIndex--;
 
 		}
-		return null;
+		return dequeue;
 	}
 	/**
 	 * [toString returns a string of all the heap element]
@@ -110,7 +112,7 @@ class Heap <Patirnt>
 	public void downTrade(int index)
 	{
 		Patient temp;
-		if(maxIndex < (index * 2 +1))
+		if(maxIndex <= (2*index +1))
 		{//determine if there is still space or not
 			if((2 * index + 1) <= maxIndex )
 			{//there are 2 children 
@@ -138,6 +140,10 @@ class Heap <Patirnt>
 			}else if(2*index > maxIndex)
 			{
 				//nothing to do
+			}
+			else
+			{
+				System.out.println("---Exception---");
 			}
 			
 		}
