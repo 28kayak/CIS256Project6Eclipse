@@ -93,12 +93,12 @@ class Heap <Patirnt>
 	public void upTrade(int index)
 	{
 		Patient temp; 
-		if((elements[index].getPriority() <= elements[index % 2].getPriority()) && (index != 1))
+		if((elements[index].getPriority() <= elements[index / 2].getPriority()) && (index != 1))
 		{
 			temp = elements[index];//store value at elements[index] temporally 
-			elements[index] = elements[index % 2];//sudstitude parents value to a child
-			elements[index % 2] = temp;//re-store value at elements[index]
-			upTrade(index % 2);
+			elements[index] = elements[index / 2];//sudstitude parents value to a child
+			elements[index / 2] = temp;//re-store value at elements[index]
+			upTrade(index / 2);
 			
 
 		}		
@@ -111,40 +111,37 @@ class Heap <Patirnt>
 	public void downTrade(int index)
 	{
 		Patient temp;
-		if(maxIndex <= (2*index +1))
-		{//determine if there is still space or not
-			if((2 * index + 1) <= maxIndex )
-			{//there are 2 children 
-				if(elements[2*index+1].getPriority() > elements[2*index].getPriority())
-				{
-					if(elements[index].getPriority() < elements[2*index+1].getPriority())
-					{
-						temp = elements[index];
-						elements[index * 2] = elements[index];
-						elements[index] = elements[index * 2];
-						downTrade(2*index +1);
-					}
-				}
-				
-			}
-			else if((2* index) == maxIndex)
-			{//there is only left side child
-				if(elements[2*index].getPriority() > elements[index].getPriority())
+		if((2 * index + 1) <= maxIndex )
+		{//there are 2 children 
+			if(elements[2*index+1].getPriority() > elements[2*index].getPriority())
+			{
+				if(elements[index].getPriority() < elements[2*index+1].getPriority())
 				{
 					temp = elements[index];
 					elements[index * 2] = elements[index];
 					elements[index] = elements[index * 2];
-					//since there is no more child(determine by no-right most child), no need to look downward
+					downTrade(2*index +1);
 				}
-			}else if(2*index > maxIndex)
+			}
+		}	
+		else if((2* index) == maxIndex)
+		{//there is only left side child
+			if(elements[2*index].getPriority() > elements[index].getPriority())
 			{
+				temp = elements[index];
+				elements[index * 2] = elements[index];
+				elements[index] = elements[index * 2];
+				//since there is no more child(determine by no-right most child), no need to look downward
+			}
+		}else if(2*index > maxIndex)
+		{
 				//nothing to do
-			}
-			else
-			{
-				System.out.println("---Exception---");
-			}
-			
+		}
+		else
+		{
+			System.out.println("---Exception---");
 		}
 	}//dwonTrade()
+	
+	
 }//class 
