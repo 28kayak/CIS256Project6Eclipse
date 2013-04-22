@@ -42,7 +42,6 @@ class Heap <Patirnt>
 	 */
 	public void add(Patient item)
 	{
-		int where = 0;
 		if(isFull())
 		{//heap is full
 			throw new PriQOverflowException("---This Heap is already FULL---");
