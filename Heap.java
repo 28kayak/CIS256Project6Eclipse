@@ -1,9 +1,9 @@
 /*Heap class which children can only make sure if children is bigger than parant or not*/
 
-class Heap <E>
+class Heap <Patirnt>
 {
 	
-	private E[] elements;//Array that holds heap elements 
+	private Patient[] elements;//Array that holds heap elements 
 	private int lastIndex;//index of last element in heap
 	private int maxIndex;//index of last position in array 
 
@@ -14,7 +14,7 @@ class Heap <E>
 	 */
 	public Heap(int maxSize)
 	{
-		elements =  new E[maxSize];
+		elements =  new Patient[maxSize];
 		lastIndex = -1;
 		maxIndex = maxSize -1;
 
@@ -40,7 +40,7 @@ class Heap <E>
 	 * 	throw  PriQOverflowException if the heap is already full]
 	 * @param item [added element ]
 	 */
-	public void add(E item)
+	public void add(Patient item)
 	{
 		int where = 0;
 		if(isFull())
@@ -49,7 +49,7 @@ class Heap <E>
 		}
 		else
 		{
-			 E[lastIndex] = item;
+			elements[lastIndex] = item;
 			 upTrade(lastIndex);
 				
 
@@ -62,7 +62,7 @@ class Heap <E>
 	 * @return [description]
 	 * @throws PriQUnderflowException [if heap is empty]
 	 */
-	public E remove() 
+	public Patient remove() 
 	{
 		if(isEmpty())
 		{
@@ -90,8 +90,8 @@ class Heap <E>
 	}
 	public void upTrade(int index)
 	{
-		E temp; 
-		if((elements[index] > elements[index % 2]) && (index != 1))
+		Patient temp; 
+		if((elements[index].compareTo(elements[index % 2]) && (index != 1)))
 		{
 			temp = elements[index];//store value at elements[index] temporally 
 			elements[index] = elements[index % 2];//sudstitude parents value to a child
