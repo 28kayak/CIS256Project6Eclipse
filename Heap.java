@@ -88,7 +88,7 @@ class Heap <E>
 		return theHeap;
 
 	}
-	public int upTrade(int index)
+	public void upTrade(int index)
 	{
 		E temp; 
 		if((elements[index] > elements[index % 2]) && (index != 1))
@@ -96,11 +96,13 @@ class Heap <E>
 			temp = elements[index];//store value at elements[index] temporally 
 			elements[index] = elements[index % 2];//sudstitude parents value to a child
 			elements[index % 2] = temp;//re-store value at elements[index]
+			upTrade(index);
+			
 
 		}		
 		else
 		{
-			return upTrade(index);
+			//nothing to do
 		}
 	}
 	public int downTrade(int index)
