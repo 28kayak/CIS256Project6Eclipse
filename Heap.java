@@ -91,7 +91,7 @@ class Heap <Patirnt>
 	public void upTrade(int index)
 	{
 		Patient temp; 
-		if((elements[index].compareTo(elements[index % 2]) && (index != 1)))
+		if((elements[index].getPriority() <= elements[index % 2].getPriority()) && (index != 1))
 		{
 			temp = elements[index];//store value at elements[index] temporally 
 			elements[index] = elements[index % 2];//sudstitude parents value to a child
